@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_erp_ocr_addon_erp_ocr_addon,erp_ocr_addon.erp_ocr_addon,model_erp_ocr_addon_erp_ocr_addon,base.group_user,1,1,1,1
+access_ocr_invoice,access_ocr_invoice,model_ocr_invoice,base.group_user,1,1,1,1

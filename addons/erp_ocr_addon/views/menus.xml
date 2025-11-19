@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+
+        <!-- MAIN MENU (App Entry) -->
+        <menuitem id="menu_ocr_root"
+                  name="OCR Processing"
+                  sequence="10"
+                  action="action_ocr_invoice"/>
+        
+        <!-- SUBMENU: INVOICES -->
+        <menuitem id="menu_ocr_invoices"
+                  name="Invoices"
+                  parent="menu_ocr_root"
+                  action="action_ocr_invoice"
+                  sequence="1"/>
+
+    </data>
+</odoo>

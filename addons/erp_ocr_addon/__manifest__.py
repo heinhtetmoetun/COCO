@@ -2,21 +2,23 @@
 {
     "name": "ERP OCR Addon",
     "summary": "Upload invoices/receipts → OCR extraction → auto-fill Accounting & Expenses.",
-    "version": "1.0.0",
-    "category": "Accounting",
+    "version": "1.0.4",
+    "category": "Tools",
     "author": "Your Name",
     "website": "https://www.example.com",
     "license": "LGPL-3",
 
-    # Required modules for your SP2
     "depends": [
         "base",
-        "account",        # for vendor bills
-        "hr_expense"      # for employee receipts
+        "account",
+        "hr_expense"
     ],
 
-    # No XML yet — we will add later
-    "data": [],
+    "data": [
+    "security/ir.model.access.csv",
+    "views/ocr_invoice_views.xml",
+    "views/menus.xml",
+    ],
 
     "installable": True,
     "application": True,
