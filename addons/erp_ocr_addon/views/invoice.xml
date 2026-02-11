@@ -15,18 +15,18 @@
           </div>
 
           <group col="2">
-            <field name="doc_type" readonly="1"/>
+            <field name="document_type" readonly="1"/>
             <field name="name" readonly="1"/>
 
             <field name="file_filename" invisible="1"/>
             <field name="file" filename="file_filename" required="1"/>
 
-            <field name="state" readonly="1"/>
+            <field name="status" readonly="1"/>
             <field name="progress" readonly="1"/>
           </group>
 
           <footer>
-            <button name="action_run_ocr" type="object" string="Run OCR" class="btn-primary"/>
+            <button name="action_run_ocr" type="object" string="Run" class="btn-primary"/>
             <button string="Go to History" type="action" name="%(erp_ocr_addon.action_ocr_document_list)d" class="btn-secondary"/>
           </footer>
 

@@ -6,15 +6,15 @@
     <field name="arch" type="xml">
       <form string="Operations Overview" create="false" edit="false">
         <sheet>
-          
+
           <div class="oe_title" style="margin-bottom: 20px;">
             <h1 style="color:#374151;">Operations Overview</h1>
           </div>
 
           <div class="row" style="margin-bottom: 30px;">
-            
+
             <div class="col-3">
-              <button name="action_open_invoices" type="object" 
+              <button name="action_open_invoices" type="object"
                       style="width:100%; height:120px; border:1px solid #E5E7EB; border-radius:12px; background:white; padding:15px; text-align:center; cursor:pointer;">
                 <div style="font-size:36px; font-weight:800; color:#4F46E5;">
                     <field name="invoice_count"/>
@@ -57,15 +57,16 @@
           <div style="margin-top:20px;">
               <h3 style="color:#374151; margin-bottom:15px; border-bottom:1px solid #E5E7EB; padding-bottom:10px;">Recent Activity</h3>
               <field name="recent_document_ids" readonly="1">
-                <tree decoration-danger="state=='failed'" decoration-success="state=='done'" decoration-muted="state=='draft'" limit="10">
+                <tree decoration-danger="status=='failed'" decoration-success="status=='done'" decoration-muted="status=='draft'" limit="10">
                     <field name="create_date" string="Time"/>
-                    <field name="document_number" string="Doc #"/>
-                    <field name="doc_type"/> <field name="seller_name"/>
-                    <field name="total_incl_tax" widget="monetary"/>
-                    <field name="state" widget="badge" 
-                           decoration-success="state == 'done'" 
-                           decoration-warning="state == 'processing'" 
-                           decoration-danger="state == 'failed'"/>
+                    <field name="invoice_id" string="Doc #"/>
+                    <field name="document_type"/>
+                    <field name="vendor_name"/>
+                    <field name="total_amount" widget="monetary"/>
+                    <field name="status" widget="badge"
+                           decoration-success="status == 'done'"
+                           decoration-warning="status == 'processing'"
+                           decoration-danger="status == 'failed'"/>
                 </tree>
               </field>
           </div>

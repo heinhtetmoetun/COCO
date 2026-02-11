@@ -7,21 +7,21 @@
     <field name="arch" type="xml">
       <tree string="OCR Documents" default_order="upload_date desc">
 
-        <field name="doc_type"/>
+        <field name="document_type"/>
         <field name="name"/>
 
-        <field name="document_number"/>
-        <field name="document_date"/>
+        <field name="invoice_id"/>
+        <field name="invoice_date"/>
 
-        <field name="seller_name"/>
+        <field name="vendor_name"/>
         <field name="customer_name"/>
 
-        <field name="state"/>
+        <field name="status"/>
         <field name="confidence_score"/>
 
-        <field name="subtotal_excl_tax"/>
+        <field name="subtotal_amount"/>
         <field name="vat_amount"/>
-        <field name="total_incl_tax"/>
+        <field name="total_amount"/>
 
         <field name="upload_date"/>
         <field name="ocr_run_at"/>

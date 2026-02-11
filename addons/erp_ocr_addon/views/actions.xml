@@ -6,14 +6,16 @@
         <field name="res_model">ocr.document</field>
         <field name="view_mode">form</field>
         <field name="target">current</field>
-        <field name="context">{'default_doc_type': 'invoice'}</field> </record>
+        <field name="context">{'default_document_type': 'invoice'}</field>
+    </record>
 
     <record id="action_ocr_document_upload_receipt" model="ir.actions.act_window">
         <field name="name">Upload Receipt</field>
         <field name="res_model">ocr.document</field>
         <field name="view_mode">form</field>
         <field name="target">current</field>
-        <field name="context">{'default_doc_type': 'receipt'}</field> </record>
+        <field name="context">{'default_document_type': 'receipt'}</field>
+    </record>
 
     <record id="action_ocr_document_list" model="ir.actions.act_window">
         <field name="name">Document History</field>

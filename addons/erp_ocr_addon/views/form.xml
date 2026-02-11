@@ -8,15 +8,14 @@
 
       <form string="OCR Document">
 
-        <!-- ================= HEADER ================= -->
         <header>
 
           <button
             name="action_run_ocr"
             type="object"
-            string="Run OCR"
+            string="Run"
             class="btn-primary"
-            invisible="state not in ('draft','failed')"
+            invisible="status not in ('draft','failed')"
           />
 
           <button
@@ -24,7 +23,7 @@
             type="object"
             string="Retry"
             class="btn-secondary"
-            invisible="state != 'failed'"
+            invisible="status != 'failed'"
           />
 
           <button
@@ -32,19 +31,17 @@
             type="object"
             string="Mark Reviewed"
             class="btn-outline-primary"
-            invisible="state != 'done'"
+            invisible="status != 'done'"
           />
 
-          <!-- CREATE VENDOR BILL -->
           <button
             name="action_create_vendor_bill"
             type="object"
             string="Create Vendor Bill"
             class="btn-primary"
-            invisible="state != 'done' or vendor_bill_id"
+            invisible="status != 'done' or vendor_bill_id"
           />
 
-          <!-- OPEN VENDOR BILL -->
           <button
             name="action_open_vendor_bill"
             type="object"
@@ -54,21 +51,18 @@
           />
 
           <field
-            name="state"
+            name="status"
             widget="statusbar"
             statusbar_visible="draft,processing,done,reviewed,failed"
           />
 
         </header>
 
-        <!-- ================= BODY ================= -->
         <sheet>
 
-          <!-- Required hidden fields -->
           <field name="vendor_bill_id" invisible="1"/>
           <field name="file_filename" invisible="1"/>
 
-          <!-- ================= TITLE ================= -->
           <div class="oe_title">
             <h1>
               <field name="name" readonly="1"/>
@@ -76,17 +70,15 @@
 
             <div class="text-muted"
                  style="margin-top:6px;display:flex;gap:14px;flex-wrap:wrap;">
-              <span><strong>Type:</strong> <field name="doc_type" readonly="1"/></span>
-              <span><strong>Doc No:</strong> <field name="document_number" readonly="1"/></span>
-              <span><strong>Date:</strong> <field name="document_date" readonly="1"/></span>
+              <span><strong>Type:</strong> <field name="document_type" readonly="1"/></span>
+              <span><strong>Doc No:</strong> <field name="invoice_id" readonly="1"/></span>
+              <span><strong>Date:</strong> <field name="invoice_date" readonly="1"/></span>
               <span><strong>Confidence:</strong> <field name="confidence_score" readonly="1"/></span>
             </div>
           </div>
 
-          <!-- ================= CONTENT ================= -->
           <div class="o_row" style="margin-top:14px; gap:14px;">
 
-            <!-- LEFT COLUMN -->
             <div class="o_col-6"
                  style="border:1px solid #e5e7eb;border-radius:14px;padding:14px;">
               <h3 style="margin:0 0 10px 0;">Extracted Information</h3>
@@ -96,11 +88,12 @@
                 <page string="Parties">
                   <group col="2">
                     <separator string="Seller" colspan="2"/>
-                    <field name="seller_name"/>
-                    <field name="seller_tax_id"/>
-                    <field name="seller_address" colspan="2"/>
-                    <field name="seller_phone"/>
-                    <field name="seller_website"/>
+                    <field name="vendor_name"/>
+                    <field name="vendor_branch_name" placeholder="e.g. Head Office / Branch 001"/>
+                    <field name="vendor_tax_id"/>
+                    <field name="vendor_address" colspan="2"/>
+                    <field name="vendor_phone"/>
+                    <field name="vendor_website"/>
 
                     <separator string="Customer" colspan="2"/>
                     <field name="customer_name"/>
@@ -112,39 +105,35 @@
 
                 <page string="Document Info">
                   <group col="2">
-                    <field name="document_number"/>
-                    <field name="document_date"/>
+                    <field name="invoice_id"/>
+                    <field name="invoice_date"/>
                     <field name="due_date"/>
                     <field name="payment_terms"/>
                     <field name="reference_number"/>
-                    <field name="currency" readonly="1"/>
+                    <field name="currency_id" readonly="1"/>
                   </group>
                 </page>
 
                 <page string="Line Items">
                   <field name="line_ids" nolabel="1">
                     <tree editable="bottom">
-                      <field name="sequence"/>
                       <field name="product_code"/>
                       <field name="description"/>
                       <field name="quantity"/>
                       <field name="unit_price"/>
                       <field name="discount_amount"/>
                       <field name="tax_rate"/>
-                      <field name="line_total"/>
+                      <field name="total_amount"/>
                     </tree>
                   </field>
                 </page>
 
                 <page string="Totals">
                   <group col="2">
-                    <field name="subtotal_excl_tax"/>
-                    <field name="total_discount"/>
-                    <field name="vat_rate"/>
+                    <field name="subtotal_amount"/>
+                    <field name="discount_amount"/>
                     <field name="vat_amount"/>
-                    <field name="total_incl_tax"/>
-                    <field name="rounding_adjustment"/>
-                    <field name="amount_in_words" colspan="2"/>
+                    <field name="total_amount"/>
                   </group>
                 </page>
 
@@ -161,7 +150,6 @@
               </notebook>
             </div>
 
-            <!-- RIGHT COLUMN -->
             <div class="o_col-6"
                  style="border:1px solid #e5e7eb;border-radius:14px;padding:14px;">
               <h3 style="margin:0 0 10px 0;">Original Document</h3>

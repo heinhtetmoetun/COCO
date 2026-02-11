@@ -7,17 +7,17 @@
       <search string="OCR Documents">
 
         <field name="name"/>
-        <field name="doc_type"/>
-        <field name="state"/>
+        <field name="document_type"/>
+        <field name="status"/>
 
-        <filter name="draft" string="Draft" domain="[('state','=','draft')]"/>
-        <filter name="processing" string="Processing" domain="[('state','=','processing')]"/>
-        <filter name="done" string="Done" domain="[('state','=','done')]"/>
-        <filter name="failed" string="Failed" domain="[('state','=','failed')]"/>
+        <filter name="draft" string="Draft" domain="[('status','=','draft')]"/>
+        <filter name="processing" string="Processing" domain="[('status','=','processing')]"/>
+        <filter name="done" string="Done" domain="[('status','=','done')]"/>
+        <filter name="failed" string="Failed" domain="[('status','=','failed')]"/>
 
         <group expand="0" string="Group By">
-          <filter name="group_by_state" string="State" context="{'group_by':'state'}"/>
-          <filter name="group_by_type" string="Document Type" context="{'group_by':'doc_type'}"/>
+          <filter name="group_by_state" string="State" context="{'group_by':'status'}"/>
+          <filter name="group_by_type" string="Document Type" context="{'group_by':'document_type'}"/>
         </group>
 
       </search>

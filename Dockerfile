@@ -15,7 +15,8 @@ RUN apt-get update && apt-get install -y \
 # =========================
 RUN pip3 install --no-cache-dir \
     typhoon-ocr \
-    azure-ai-documentintelligence
+    azure-ai-documentintelligence \
+    azure-ai-formrecognizer
 
 
 USER odoo
